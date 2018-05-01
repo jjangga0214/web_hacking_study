@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-      echo "Hello, PHP?";
+        echo ("I received: ".$_GET["name"]."from you");
     ?>
 </body>
 </html>
