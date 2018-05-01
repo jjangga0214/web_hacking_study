@@ -8,7 +8,7 @@
     session_start();
         if($_POST["pw"] == "password") {
             $_SESSION["id"] = $_POST["id"];
-            echo ("<script> window.location='./5.php' </script>");
+            echo ("<script> window.location='./6.php' </script>");
         } else {
             echo("<script> alert(\"Wrong password\") </script>");
             echo("<script> history.go(-1) </script>");
