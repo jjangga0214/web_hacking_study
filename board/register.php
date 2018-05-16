@@ -27,7 +27,7 @@ if ($_POST["user_id"] && $_POST["user_pw"]) {
     }
 
     /** @noinspection SqlDialectInspection */
-    $sql = "INSERT INTO Users (user_id, user_pw) VALUES ('" . $_POST["user_id"]. "','" .$_POST["user_pw"]. "');";
+    $sql = sprintf("INSERT INTO User(user_id, user_pw) VALUES(\"%s\", \"%s\")", $_POST["user_id"], $_POST["user_pw"]);
     if($db->query($sql) == true) {
         echo "Register was success. We would redirect you to the index page in 3 seconds";
         echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
