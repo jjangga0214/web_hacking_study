@@ -29,7 +29,7 @@ session_start();
             while ($row = $result->fetch_assoc()) {
                 if ($row["user_id"] == $_POST["user_id"] && $row["user_pw"] == $_POST["user_pw"]) {
                     $_SESSION["logged_in"] = true;
-                    $_SESSION["user_id"] = "user_id";
+                    $_SESSION["user_id"] = $_POST["user_id"];
                     echo "<script>window.location.replace(\"./index.php\");</script>";
                     break;
                 }
