@@ -36,6 +36,7 @@ if ($_POST['user_id'] && $_POST["user_pw"]) {
         echo "Error occurs";
     };
 }
+$db->close();
 ?>
 </body>
 </html>
