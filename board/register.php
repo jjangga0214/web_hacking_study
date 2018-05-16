@@ -28,7 +28,7 @@ if ($_POST['user_id'] && $_POST["user_pw"]) {
     $user_id = $db->real_escape_string($_POST["user_id"]);
     $user_pw = $db->real_escape_string($_POST["user_pw"]);
 
-    $sql = "INSERT INTO User(user_id, user_pw) VALUES('$user_id', '$user_pw')";
+    $sql = "INSERT INTO Users(user_id, user_pw) VALUES('$user_id', '$user_pw')";
     if ($db->query($sql) === TRUE) {
         echo "Register was success. We would redirect you to the index page in 3 seconds";
         echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
