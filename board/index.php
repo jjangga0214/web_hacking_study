@@ -37,12 +37,12 @@ session_start();
             echo "Login failed. Your id was not found";
         } else {
             echo("
-            <form action='' method='post'>
+            <form action='./index.php' method='post'>
                 ID: <input type='text' name='user_id' required>
                 PW: <input type='password' name='user_pw' required>
                 <input type='submit' value='Login'>
             </form>
-            <input type='submit' value='Register' onclick='window.location.replace(\"index.php\")'>
+            <input type='submit' value='Register' onclick='window.location.replace(\"register.php\")'>
             ");
         }
         ?>
