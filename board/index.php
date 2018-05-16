@@ -24,7 +24,7 @@ session_start();
             }
 
             /** @noinspection SqlDialectInspection */
-            $sql = "SELECT user_id, user_pw FROM free_board";
+            $sql = "SELECT user_id, user_pw FROM Users";
             $result = $db->query($sql);
             while ($row = $result->fetch_assoc()) {
                 if ($row["user_id"] == $_POST["user_id"] && $row["user_pw"] == $_POST["user_pw"]) {
