@@ -28,9 +28,12 @@ if ($_POST["user_id"] && $_POST["user_pw"]) {
 
     /** @noinspection SqlDialectInspection */
     $sql = "INSERT INTO Users (user_id, user_pw) VALUES ('" . $_POST["user_id"]. "','" .$_POST["user_pw"]. "');";
-    $result = $db->query($sql);
-    echo "Register was success. We would redirect you to the index page";
-    echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
+    if($db->query($sql) == true) {
+        echo "Register was success. We would redirect you to the index page in 3 seconds";
+        echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
+    } else {
+        echo "Error occurs";
+    };
 }
 ?>
 </body>
