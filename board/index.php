@@ -24,12 +24,12 @@ session_start();
             }
 
             /** @noinspection SqlDialectInspection */
-            $sql = "SELECT user_id, user_pw FROM free_board";
+            $sql = "SELECT user_id, user_pw FROM Users";
             $result = $db->query($sql);
             while ($row = $result->fetch_assoc()) {
                 if ($row["user_id"] == $_POST["user_id"] && $row["user_pw"] == $_POST["user_pw"]) {
                     $_SESSION["logged_in"] = true;
-                    $_SESSION["user_id"] = "user_id";
+                    $_SESSION["user_id"] = $_POST["user_id"];
                     echo "<script>window.location.replace(\"./index.php\");</script>";
                     break;
                 }
@@ -37,17 +37,16 @@ session_start();
             echo "Login failed. Your id was not found";
         } else {
             echo("
-            <form action='' method='post'>
+            <form action='./index.php' method='post'>
                 ID: <input type='text' name='user_id' required>
                 PW: <input type='password' name='user_pw' required>
                 <input type='submit' value='Login'>
             </form>
-            <input type='submit' value='Register' onclick='window.location.replace(\"index.php\")'>
+            <input type='submit' value='Register' onclick='window.location.replace(\"register.php\")'>
             ");
         }
         ?>
     </div>
-    ?>
 </header>
 </body>
 </html>
