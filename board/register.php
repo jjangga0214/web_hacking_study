@@ -20,16 +20,16 @@ if ($_POST['user_id'] && $_POST["user_pw"]) {
     $db_pw = "";
     $db_name = "free_board";
 
-    $db = mysqli_connect($db_address, $db_id, $db_pw, $db_name);
+    $db = new mysqli($db_address, $db_id, $db_pw, $db_name);
 
-    if ($db === false) {
+    if ($db->connect_error) {
         die("while constructing database connection, error occurred" . $db->connect_error);
     }
-    $user_id = mysqli_real_escape_string($db, $_POST["user_id"]);
-    $user_pw = mysqli_real_escape_string($db, $_POST["user_pw"]);
+    $user_id = $db->real_escape_string($_POST["user_id"]);
+    $user_pw = $db->real_escape_string($_POST["user_pw"]);
 
     $sql = "INSERT INTO User(user_id, user_pw) VALUES('$user_id', '$user_pw')";
-    if(mysqli_query($db, $sql)) {
+    if ($db->query($sql)) {
         echo "Register was success. We would redirect you to the index page in 3 seconds";
         echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
     } else {
