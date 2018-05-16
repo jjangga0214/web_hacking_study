@@ -14,7 +14,7 @@
     <input type="submit" value="register">
 </form>
 <?php
-if ($_POST["user_id"] && $_POST["user_pw"]) {
+if ($_POST['user_id'] && $_POST["user_pw"]) {
     $db_address = "localhost";
     $db_id = "root";
     $db_pw = "";
@@ -26,8 +26,8 @@ if ($_POST["user_id"] && $_POST["user_pw"]) {
         die("while constructing database connection, error occurred" . $db->connect_error);
     }
 
-    /** @noinspection SqlDialectInspection */
-    $sql = sprintf("INSERT INTO User(user_id, user_pw) VALUES(\"%s\", \"%s\")", $_POST["user_id"], $_POST["user_pw"]);
+//    /** @noinspection SqlDialectInspection */
+    $sql = "INSERT INTO User(user_id, user_pw) VALUES($_POST[user_id], $_POST[user_pw])";
     if($db->query($sql) == true) {
         echo "Register was success. We would redirect you to the index page in 3 seconds";
         echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
