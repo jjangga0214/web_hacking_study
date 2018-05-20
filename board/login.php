@@ -7,16 +7,7 @@
 <body>
 <?php
 if ($_POST["user_id"] && $_POST["user_pw"]) {
-    $db_address = "localhost";
-    $db_id = "root";
-    $db_pw = "";
-    $db_name = "free_board";
-
-    $db = new mysqli($db_address, $db_id, $db_pw, $db_name);
-
-    if ($db->connect_error) {
-        die("while constructing database connection, error occurred" . $db->connect_error);
-    }
+    require "db_info.php";
     /** @noinspection SqlResolve */
     $sql = "SELECT user_id, user_pw FROM Users";
     $result = $db->query($sql);
