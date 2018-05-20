@@ -11,27 +11,6 @@ session_start();
         <?php
         if ($_SESSION["logged_in"]) {
             echo("Welcome, " . $_SESSION["user_id"] . ".");
-            echo("
-            <table style='width: 100%;'>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                </tr>
-            ");
-            for ($i = 0; $i < 20; ++$i) {
-                /** @noinspection SqlResolve */
-                $sql = "SELECT * FROM Board WHERE id = $i";
-                require "db_info.php";
-                $result = $db->query($sql);
-                $result = $result->fetch_assoc();
-                echo "
-                    <tr>
-                        <td>" . $result['title'] . "</td>
-                        <td>" . $result['author'] . "</td>
-                    </tr>
-                ";
-            }
-            echo "</table>";
         } else {
             echo("
             <form action='./login.php' method='post'>
@@ -45,5 +24,28 @@ session_start();
         ?>
     </div>
 </header>
+<?php
+echo("
+    <table style='width: 100%;'>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        ");
+for ($i = 0; $i < 20; ++$i) {
+    /** @noinspection SqlResolve */
+    $sql = "SELECT * FROM Board WHERE id = $i";
+    require "db_info.php";
+    $result = $db->query($sql);
+    $result = $result->fetch_assoc();
+    echo "
+        <tr>
+            <td>" . $result['title'] . "</td>
+            <td>" . $result['author'] . "</td>
+        </tr>
+        ";
+}
+echo "</table>";
+?>
 </body>
 </html>
