@@ -31,7 +31,7 @@ session_start();
 </header>
 <?php
 echo("
-    <table style='width: 100%; text-align: center;'>
+    <table style='width: 100%; text-align: center;border-bottom: 1px solid black;'>
         <tr>
             <th>Title</th>
             <th>Author</th>
@@ -65,12 +65,10 @@ if ($_SESSION["logged_in"]) {
 } else {
     echo "<a id='btn_write' onclick='alert(\"login please\")'>write</a>";
 }
-?>
-<div style="border-bottom: 1px solid black;"></div>
-<?php
 if ($_POST["id"]) {
+    $id = $_POST["id"];
     /** @noinspection SqlResolve */
-    $result_c = $db->query("SELECT content FROM Board WHERE id = " . $_POST["id"]);
+    $result_c = $db->query("SELECT content FROM Board WHERE id = $id;");
     $result_c = $result_c->fetch_assoc();
     echo $result_c["content"];
 }
