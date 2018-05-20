@@ -54,7 +54,7 @@ for ($i = 1; $i < 20; ++$i) {
     $user_id = $user_id->fetch_assoc();
     echo "
         <tr>
-            <td>" . $result['title'] . "</td>
+            <td><a href='index.php?id=$i'>" . $result['title'] . "</a></td>
             <td>" . $user_id["user_id"] . "</td>
         </tr>
         ";
@@ -64,6 +64,15 @@ if ($_SESSION["logged_in"]) {
     echo "<a id='btn_write' href='write.php'>write</a>";
 } else {
     echo "<a id='btn_write' onclick='alert(\"login please\")'>write</a>";
+}
+?>
+<div style="border-bottom: 1px solid black;"></div>
+<?php
+if ($_POST["id"]) {
+    /** @noinspection SqlResolve */
+    $result_c = $db->query("SELECT content FROM Board WHERE id = " . $_POST["id"]);
+    $result_c = $result_c->fetch_assoc();
+    echo $result_c["content"];
 }
 ?>
 </body>
