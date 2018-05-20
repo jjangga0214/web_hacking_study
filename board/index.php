@@ -26,7 +26,7 @@ session_start();
 </header>
 <?php
 echo("
-    <table style='width: 100%;'>
+    <table style='width: 100%; text-align: center;'>
         <tr>
             <th>Title</th>
             <th>Author</th>
