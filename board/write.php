@@ -8,14 +8,14 @@
 
 <?php
 if ($_SESSION["logged_in"]) {
-    if ($_POST["author"] && $_POST["title"] && $_POST["content"]) {
+    if ($_POST["title"] && $_POST["content"]) {
         require "db_info.php";
-        $author = $db->real_escape_string($_POST["author"]);
+        $author = $db->real_escape_string($_SESSION["id"]);
         $title = $db->real_escape_string($_POST["title"]);
         $content = $db->real_escape_string($_POST["content"]);
 
         /** @noinspection SqlResolve */
-        $sql = "INSERT INTO Board (author, title, conetent) VALUES ('$author', '$title', '$content');";
+        $sql = "INSERT INTO Board (author, title, content) VALUES ('$author', '$title', '$content');";
         if ($db->query($sql) === TRUE) {
             echo "Writing was success. We would redirect you to the index page in 3 seconds";
             echo "<script>setTimeout(function () {window.location.href = \"index.php\";}, 3000)</script>";
