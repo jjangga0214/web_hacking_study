@@ -46,7 +46,8 @@ for ($i = 0; $i < 20; ++$i) {
     /** @noinspection SqlResolve */
     $id = $result['author'];
     /** @noinspection SqlResolve */
-    $user_id = $db->query("SELECT id FROM Users WHERE id = $id");
+    $user_id = $db->query("SELECT user_id FROM Users WHERE id = $id");
+    $user_id = $user_id->fetch_assoc();
     echo "
         <tr>
             <td>" . $result['title'] . "</td>
