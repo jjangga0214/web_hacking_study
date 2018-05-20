@@ -4,6 +4,11 @@ session_start();
 <html>
 <head>
     <title>Free Board</title>
+    <style>
+        #btn_write {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -46,6 +51,11 @@ for ($i = 0; $i < 20; ++$i) {
         ";
 }
 echo "</table>";
+if ($_SESSION["logged_in"]) {
+    echo "<a id='btn_write' href='write.php'>write</a>";
+} else {
+    echo "<a id='btn_write' onclick='alert(\"login please\")'>write</a>";
+}
 ?>
 </body>
 </html>
