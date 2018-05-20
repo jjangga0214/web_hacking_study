@@ -43,10 +43,14 @@ for ($i = 0; $i < 20; ++$i) {
     require "db_info.php";
     $result = $db->query($sql);
     $result = $result->fetch_assoc();
+    /** @noinspection SqlResolve */
+    $id = $result['author'];
+    /** @noinspection SqlResolve */
+    $user_id = $db->query("SELECT id FROM Users WHERE id = $id");
     echo "
         <tr>
             <td>" . $result['title'] . "</td>
-            <td>" . $result['author'] . "</td>
+            <td>" . $user_id . "</td>
         </tr>
         ";
 }
