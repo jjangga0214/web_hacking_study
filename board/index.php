@@ -48,6 +48,7 @@ for ($i = 0; $i < 20; ++$i) {
     /** @noinspection SqlResolve */
     $user_id = $db->query("SELECT user_id FROM Users WHERE id = $id");
     $user_id = $user_id->fetch_assoc();
+    $user_id = $user_id["user_id"];
     echo "
         <tr>
             <td>" . $result['title'] . "</td>
