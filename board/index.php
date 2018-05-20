@@ -37,14 +37,18 @@ echo("
             <th>Author</th>
         </tr>
         ");
-for ($i = 0; $i < 20; ++$i) {
+for ($i = 1; $i < 20; ++$i) {
     /** @noinspection SqlResolve */
     $sql = "SELECT * FROM Board WHERE id = $i";
     require "db_info.php";
     $result = $db->query($sql);
     $result = $result->fetch_assoc();
+    if (!$result) {
+        continue;
+    }
     /** @noinspection SqlResolve */
     $id = $result['author'];
+
     /** @noinspection SqlResolve */
     $user_id = $db->query("SELECT user_id FROM Users WHERE id = $id");
     $user_id = $user_id->fetch_assoc();
