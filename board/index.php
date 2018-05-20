@@ -31,6 +31,7 @@ session_start();
                     </tr>
                 ";
             }
+            echo "</table>";
         } else {
             echo("
             <form action='./login.php' method='post'>
