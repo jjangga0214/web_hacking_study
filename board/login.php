@@ -17,7 +17,6 @@ if ($_POST["user_id"] && $_POST["user_pw"]) {
     if ($db->connect_error) {
         die("while constructing database connection, error occurred" . $db->connect_error);
     }
-
     /** @noinspection SqlResolve */
     $sql = "SELECT user_id, user_pw FROM Users";
     $result = $db->query($sql);

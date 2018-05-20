@@ -13,12 +13,12 @@ session_start();
             echo("Welcome, " . $_SESSION["user_id"] . ".");
         } else {
             echo("
-            <form action='./login.php' method='post'>
+            <form style='border-bottom: 1px solid black; text-align: right;' action='./login.php' method='post'>
                 ID: <input type='text' name='user_id' required>
                 PW: <input type='password' name='user_pw' required>
                 <input type='submit' value='Login'>
+                <button type='button' onclick='window.location.replace(\"register.php\")'>Register </button>
             </form>
-            <input type='submit' value='Register' onclick='window.location.replace(\"register.php\")'>
             ");
         }
         ?>
