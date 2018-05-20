@@ -65,12 +65,12 @@ if ($_SESSION["logged_in"]) {
 } else {
     echo "<a id='btn_write' onclick='alert(\"login please\")'>write</a>";
 }
-if ($_POST["id"]) {
-    $id = $_POST["id"];
+if ($_GET["id"]) {
+    $id = $_GET["id"];
     /** @noinspection SqlResolve */
     $result_c = $db->query("SELECT content FROM Board WHERE id = $id;");
     $result_c = $result_c->fetch_assoc();
-    echo $result_c["content"];
+    echo ($result_c["content"]);
 }
 ?>
 </body>
