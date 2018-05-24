@@ -9,7 +9,7 @@
     if(isset($_SESSION["id"])) {
         echo "Hello, ".$_SESSION["id"];
     } else {
-        echo ("<script> alert('login required'); window.location('./5.html'); </script>");
+        echo "<script> alert('login required'); window.location('./5.html'); </script>";
     }
     ?>
 </body>
